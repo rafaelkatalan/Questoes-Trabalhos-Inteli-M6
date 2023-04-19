@@ -6,8 +6,6 @@
 
 Os paradigmas de programação são formas distintas de resolver problemas utilizando abordagens diferentes. É extremamente importante ressaltar que, em geral, todos os problemas resolvidos por mais de uma abordagem. Dado este contexto, segue um artigo de [referência](https://medium.com/programming-essentials/a-few-functional-programming-exercises-932b061aac9a).
 
-Resolver todas as questões e apresentar as entregas já no Github do Estudante.
-
 ## Questões:
 
 1. Crie uma função **dobrar_numeros** que receba uma lista de números e retorne uma nova lista com cada número dobrado. A implementação da lista deve acontecer de forma funcional, priorizando o desenvolvimento com os recursos funcionais da linguagem.

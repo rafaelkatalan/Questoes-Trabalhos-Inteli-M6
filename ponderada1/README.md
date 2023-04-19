@@ -90,6 +90,3 @@ Agora, para criar um container com o ROS2 e o TurtleBot, abra um terminal e exec
 
 - Este comando lança um teleop para controlar o robô simulado no ambiente do TurtleBot. Use as teclas de seta para mover o robô simulado pelo ambiente do TurtleBot.
 - Se tudo estiver funcionando corretamente, você deverá ver a interface gráfica do TurtleBot no seu computador e poderá controlar o robô simulado.
-
-
-

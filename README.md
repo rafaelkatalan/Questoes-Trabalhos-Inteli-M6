@@ -2,13 +2,17 @@
 
 Este repositório possui as questões das atividades ponderadas para os alunos. A seguinte estrutura está definida para os trabalhos:
 
-- ***Atividade 1 - Instalação do Ambiente ROS 2 de Desenvolvimento:*** Primeira atividade que deve ser desenvolvida pelos alunos. Ela deve ser entregue de acordo com os critérios definidos no arquivo [Atividade1.md](). 
+# Semana 1
 
-- ***Atividade 2 - Orientação a Objetos:*** Segunda atividade que deve ser desenvolvida pelos alunos. Ela deve ser entregue de acordo com os critérios definidos no arquivo [Atividade2.md](). Importante: Para realização desta atividade, recomenda-se que os alunos tenham conhecimento de orientação a objetos e não utilizem nenhuma ferramento de geração de código, como CoPilot e ChatGPT.
+- ***Ponderada 1 - Instalação do Ambiente ROS 2 e primeira interação com o turtlesim:*** Primeira atividade que deve ser desenvolvida pelos alunos. É possível consultar o enunciado, padrão de qualidade e arquivos de referência na [pasta da atividade](./ponderada1)
 
-- ***Atividade 3 - Programação Funcional:*** Terceira atividade que deve ser desenvolvida pelos alunos. Ela deve ser entregue de acordo com os critérios definidos no arquivo [Atividade3.md](). Importante: Para realização desta atividade, recomenda-se que os alunos não utilizem nenhuma ferramento de geração de código, como CoPilot e ChatGPT.
+- ***Lista de Exercícios 1 - Conceitos de programação orientada à objetos:*** Atividade opcional. Ela deve ser entregue de acordo com os critérios definidos na [pasta da atividade](./lista1). Importante: Para realização desta atividade, recomenda-se que os alunos tenham conhecimento de orientação a objetos e não utilizem nenhuma ferramento de geração de código, como CoPilot e ChatGPT.
 
-- ***Atividade 4 - Estrutura de Dados:*** Quarta atividade que deve ser desenvolvida pelos alunos. Ela deve ser entregue de acordo com os critérios definidos no arquivo [Atividade4.md](). Importante: Para realização desta atividade, recomenda-se que os alunos não utilizem nenhuma ferramento de geração de código, como CoPilot e ChatGPT.
+# Semana 2
 
+- ***Lista 2 - Conceitos de programação funcional:*** Atividade opcional. Ela deve ser entregue de acordo com os critérios definidos na [pasta da atividade](./lista2). Importante: Para realização desta atividade, recomenda-se que os alunos não utilizem nenhuma ferramento de geração de código, como CoPilot e ChatGPT.
 
-- ***Atividade 1 - Instalação do Ambiente ROS 2 de Desenvolvimento:*** Primeira atividade que deve ser desenvolvida pelos alunos. Ela deve ser entregue de acordo com os critérios definidos no arquivo [Atividade1.md]().
+# Semana 3
+
+- ***Ponderada 2 - Utilizando grafos para otimização de rota:*** Segunda atividade ponderada do módulo, com o objetivo de introduzir em um ambiente controlado os conceitos de utilização de grafos e outras estruturas de dados e sua possível interação com sistemas robóticos. É possível consultar o enunciado, padrão de qualidade e arquivos de referência na [pasta da atividade](./ponderada2)
+
