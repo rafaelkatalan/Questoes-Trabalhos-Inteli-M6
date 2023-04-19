@@ -59,68 +59,105 @@ Agora, vamos garantir que tudo o que vamos precisar de Python está no sistema. 
 sudo apt install python3 python3-pip python3-venv
 ```
 
+Por fim, vamos instalar algumas outras ferramentas que podem ser úteis. Rode:
+```bash
+sudo apt install curl software-properties-common
+```
+
 Agora sim! Tudo certo para começarmos a instalação do ROS.
 
 ### Instalação do ROS2 Humble
 
-- Abra a distribuição Linux instalada no passo 2.
-- Abra um terminal na distribuição Linux.
-- Execute os seguintes comandos:
+Para instalar o ROS, precisamos adicionar novos repositórios ao apt, pois o ROS não se encontra nos repositórios padrão do Ubuntu. Para isso começaremos garantindo que o repositório `universe` está habilitado. Rode:
 
-```sudo apt update```
+```bash
+sudo apt-add-repository universe
+```
 
-```sudo apt install -y apt-transport-https ca-certificates curl gnupg lsb-release```
+A seguir, precisamos baixar uma chave GPG e adicioná-la ao keyring do sistema para poder validar o repositório que vamos adicionar. Rode:
+```bash
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+```
 
-```curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg```
+Agora precisamos adicionar o repositório à lista de repositórios. Use:
+```bash
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+```
 
-```echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null```
+Como fizemos alterações nos repositórios do apt, precisamos atualizar seu banco de dados novamente. Rode:
 
-```sudo apt update```
+```
+sudo apt update
+```
 
-```sudo apt install -y docker-ce docker-ce-cli containerd.io```
+Pronto! Agora estamos finalmente prontos para instalar a nossa distribuição de ROS. Para facilitar nossa vida, vamos escolher a versão do pacote mais completa, assim não precisaremos nos preocupar se os exemplos e pacotes que vamos precisar já estarão instalados ou não. Rode:
 
-```sudo usermod -aG docker $USER```
+```bash
+sudo apt install ros-humble-desktop
+```
 
-- Feche e abra novamente o terminal para aplicar as alterações.
-- Abra o terminal na distribuição Linux.
-- Execute o seguinte comando: 
+Essa instalação vai demorar alguns minutos, então tenha paciência =)
 
-```docker run hello-world```
+Falta apenas uma coisa para termos o poder do ROS em nossas mãos: por padrão, o ROS não adiciona automaticamente todos os executáveis e variáveis de ambiente ao nosso sistema, mas existe um script que faz todo esse setup para nós. Como ninguém tem tempo de ficar dando source nesse script toda vez, rodem esse comando para garantir que tudo vai estar configurado sempre que você abrir o terminal do WSL:
 
-- Se tudo estiver funcionando corretamente, você deverá ver uma saída similar a esta:
+```bash
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+```
 
-<img src="../assets/saida-docker.png" alt="Saída Docker"/>
+Perfeito! Agora estamos prontos para trabalhar com o ROS2 Humble. Vamos testar?
 
-- Abra um terminal e execute o seguinte comando: 
+Abra dois terminais e, para cada um deles vamos rodar um comando. Para o terminal 1:
 
-```docker pull ros:foxy```
+```bash
+ros2 run demo_nodes_cpp talker
+```
 
-- Aguarde o download da imagem do ROS2 ser concluído. Isso pode levar alguns minutos, dependendo da velocidade da sua conexão com a Internet.
+Para o terminal 2:
+```bash
+ros2 run demo_nodes_cpp listener
+```
 
-Agora, para criar um container com o ROS2 e o TurtleBot, abra um terminal e execute o seguinte comando:
+Se tudo deu certo, você acabou de ver dois processos totalmente independentes conversando através da interface de comunicação do ROS. Legal, né? Para fechar as instruções necessárias, vamos apenas aprender a rodar nosso exemplo.
 
-```docker run -it --name my_turtlebot --privileged --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" ros:foxy /bin/bash```
+### Interagindo com o código de exemplo
 
-- Este comando cria um novo container chamado "my_turtlebot" com o ROS2 instalado e o ambiente gráfico configurado para exibir a interface do TurtleBot.
+Nesse repositório contamos com um [código de exemplo](./exemplo) para que vocês não partam do 0 em seu desenvolvimento. Para conseguir rodá-lo, basta fazer algumas coisinhas. Primeiro, navegar até a pasta do exemplo:
 
-- Para instalar o pacote do TurtleBot, no terminal do container, execute o seguinte comando: 
+```bash
+cd exemplo
+```
 
-```apt update && apt install -y ros-foxy-turtlebot3 ros-foxy-turtlebot3-simulations```
+Aqui você vai encontrar a seguinte estrutura:
+```
+.
+└── exemplo
+    ├── exemplo.py
+    └── requirements.txt
 
-- Aguarde a instalação dos pacotes ser concluída.
+1 directory, 2 files
+```
 
-- Para testar o TurtleBot, no terminal do container, execute os seguintes comandos:
+O arquivo `exemplo.py` é um script utilizando OOP para interagir com o nó de simulação do turtlesim. Já o requirements.txt é o resultado de um comando `pip freeze` dentro de um venv utilizado para criar esse exemplo. Isso significa que ele tem todos os pacotes necessários para rodar o script. Vamos garantir que está tudo instalado com: 
 
-```source /opt/ros/foxy/setup.bash```
-```export TURTLEBOT3_MODEL=burguer```
-```roslaunch turtlebot3_gazebo turtlebot3_world.launch```
+```bash
+pip install -r requirements.txt
+```
 
-- Este comando lança uma simulação do ambiente do TurtleBot no Gazebo.
-- Abra um novo terminal e execute os seguintes comandos:
+OK! Agora estamos prontos para rodar o exemplo. Primeiro, abra um terminal e rode o comando necessário para inicializar o nó do turtlesim:
+```bash
+ros2 run turtlesim turtlesim_node
+```
 
-```source /opt/ros/foxy/setup.bash```
-```export TURTLEBOT3_MODEL=burguer```
-```roslaunch turtlebot3_teleop turtlebot3_world.launch```
+A seguir, basta rodar o script em outro terminal. Para isso, primeiro vamos garantir que ele está com permissão para execução:
 
-- Este comando lança um teleop para controlar o robô simulado no ambiente do TurtleBot. Use as teclas de seta para mover o robô simulado pelo ambiente do TurtleBot.
-- Se tudo estiver funcionando corretamente, você deverá ver a interface gráfica do TurtleBot no seu computador e poderá controlar o robô simulado.
+```bash
+chmod +x exemplo.py
+```
+
+Ok, agora basta rodar o script como se fosse um executável qualquer em Linux:
+
+```bash
+./exemplo.py
+```
+
+Pronto! Você já está preparado para começar a desenvolver seu autoestudo. Divirta-se! =D
