@@ -1,1 +1,1 @@
-Para este modelo usei o dataset do Roboflow com as labels. Treinei o modelo best.py com o dataset para reconhecer rachaduras em 20 epocas usando o modelo pre treinado do YOLO.
+Para este modelo usei o dataset do Roboflow já anotado para fazer o seleção da area onde estão localizadas as rachaduras na imagem. Treinei o modelo com o dataset para reconhecer rachaduras em 20 epocas usando o modelo pre treinado do YOLO. Com isso, gerei um arquivo best.pt que guarda o modelo treinado e o utilizo para fazer identificar rachaduras em imagens.
