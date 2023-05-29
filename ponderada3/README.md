@@ -1,5 +1,1 @@
-<img src="../assets/logo-inteli.png" alt="Logo do Inteli"/>
-
-# Ponderada 3
-
-Em construção...
+Para este modelo usei o dataset do Roboflow com as labels. Treinei o modelo best.py com o dataset para reconhecer rachaduras em 20 epocas usando o modelo pre treinado do YOLO.
