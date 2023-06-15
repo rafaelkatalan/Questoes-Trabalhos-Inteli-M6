@@ -45,3 +45,5 @@ Essa abordagem permite o monitoramento contínuo da tela em busca de rachaduras.
 - **Banco de Dados SQLite:**
    - Armazenamento dos resultados da detecção
    - Uso do SQLAlchemy para interagir com o banco de dados
+
+Demonstração: https://photos.app.goo.gl/Q8LpbwrcCe3dvcnu9
